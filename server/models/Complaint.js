@@ -1,0 +1,2 @@
+import mongoose from 'mongoose';
+export default mongoose.model('Complaint', new mongoose.Schema({ contract: { type: mongoose.Schema.Types.ObjectId, ref: 'Contract' }, farmer: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }, subject: String, description: String, category: { type: String, enum: ['PAYMENT','QUALITY','CONTRACT','DELIVERY','HARVEST','OTHER'] }, amountInvolved: Number, attachments: [String], status: { type: String, enum: ['OPEN','UNDER_REVIEW','RESOLVED','REJECTED'], default: 'OPEN' }, adminResponse: String }, { timestamps: true }));
