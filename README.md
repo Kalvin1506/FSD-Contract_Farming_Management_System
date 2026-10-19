@@ -49,9 +49,13 @@ Use `Authorization: Bearer <token>` for protected endpoints. The workflow endpoi
 
 The supplied model fields are prepared to store Cloudinary URLs. Add `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, and `CLOUDINARY_API_SECRET` before enabling the upload adapter. A local Multer upload fallback should be used in development for a full upload rollout.
 
-## Next implementation increments
+## Implemented workflow
 
-The current vertical slice establishes all central collections and API modules. Recommended follow-on work is: wire each workspace form to its API endpoint, add Multer/Cloudinary upload routes, render the Leaflet farm map, expand resource ownership checks at every mutation, and add automated API/integration tests.
+The application includes working role-specific screens and APIs for farm profiles, contract creation and discovery, farmer applications, buyer decisions, field monitoring, harvest submission and approval, quality inspection, payment tracking, notifications, complaints, user administration, and analytics. API reads and mutations are scoped to the signed-in role and record ownership.
+
+Run `npm.cmd test` for the isolated MongoDB integration suite, `npm.cmd run lint` for frontend checks, and `npm.cmd run build` for the production client build.
+
+For an internet-facing deployment, replace the local JWT secret, configure managed MongoDB, restrict CORS to the deployed client, enable HTTPS, and connect the prepared image URL fields to Cloudinary or another object store.
 
 ## Screenshots
 

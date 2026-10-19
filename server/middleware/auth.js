@@ -10,4 +10,4 @@ export const protect = async (req, res, next) => {
     next();
   } catch (error) { res.status(401); next(error); }
 };
-export const allow = (...roles) => (req, res, next) => roles.includes(req.user.role) ? next() : res.status(403) && next(new Error('You are not authorized for this action'));
+export const allow = (...roles) => (req, res, next) => { if (roles.includes(req.user.role)) return next(); res.status(403); next(new Error('You are not authorized for this action')); };
